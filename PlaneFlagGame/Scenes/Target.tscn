@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://50wto5gq5vos"]
+
+[ext_resource type="Texture2D" uid="uid://bfj2bwasnjhq0" path="res://Assets/kenney_tiny-battle/Tiles/tile_0071.png" id="1_k3dsw"]
+[ext_resource type="Script" path="res://Scripts/Target.gd" id="2_8appa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i117i"]
+size = Vector2(1, 1)
+
+[node name="Target" type="Node2D"]
+
+[node name="Target" type="Sprite2D" parent="."]
+position = Vector2(80, 80)
+scale = Vector2(10, 10)
+texture = ExtResource("1_k3dsw")
+script = ExtResource("2_8appa")
+
+[node name="Area2D" type="Area2D" parent="Target"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Target/Area2D"]
+shape = SubResource("RectangleShape2D_i117i")
+
+[connection signal="area_entered" from="Target/Area2D" to="Target" method="_on_area_2d_area_entered"]
